@@ -8,6 +8,11 @@ namespace CGM\Books\Metadata;
 class Item 
 {
     /**
+     * @var string 
+     */
+    public $id;
+    
+    /**
      * @var string
      */
     public $title;
