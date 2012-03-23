@@ -39,49 +39,51 @@ class Parser implements ParserInterface
     /**
      * Creates a metadata item instance from the metadata for a single book.
      *
-     * @param stdClass $item 
+     * @param stdClass $data 
      */
-    private function createItem(stdClass $item) 
+    private function createItem(stdClass $data) 
     {
-        $volumeInfo = $item->volumeInfo;
+        $item = new Item;
         
-        $metadataItem = new Item;
+        $item->id = $data->id;
+        
+        $volumeInfo = $data->volumeInfo;
         
         if(isset($volumeInfo->title)) {
-            $metadataItem->title = $volumeInfo->title;
+            $item->title = $volumeInfo->title;
         }
         
         if(isset($volumeInfo->description)) {
-            $metadataItem->description = $volumeInfo->description;
+            $item->description = $volumeInfo->description;
         }
         
         if(isset($volumeInfo->industryIdentifiers)) {
             $ISBN = array_pop($volumeInfo->industryIdentifiers);
-            $metadataItem->ISBN = $ISBN->identifier;
+            $item->ISBN = $ISBN->identifier;
         }
         
         if(isset($volumeInfo->publisher)) {
-            $metadataItem->publisher = $volumeInfo->publisher;
+            $item->publisher = $volumeInfo->publisher;
         }
         
         if(isset($volumeInfo->publishedDate)) {
-            $metadataItem->publishedDate = new DateTime($volumeInfo->publishedDate);
+            $item->publishedDate = new DateTime($volumeInfo->publishedDate);
         }
         
         if(isset($volumeInfo->authors)) {
-            $metadataItem->authors = $volumeInfo->authors;
+            $item->authors = $volumeInfo->authors;
         }
         
         if(isset($volumeInfo->imageLinks)) {
             if(isset($volumeInfo->imageLinks->smallThumbnail)) {
-                $metadataItem->smallThumbnail = $volumeInfo->imageLinks->smallThumbnail;
+                $item->smallThumbnail = $volumeInfo->imageLinks->smallThumbnail;
             }
             if(isset($volumeInfo->imageLinks->thumbnail)) {
-                $metadataItem->thumbnail = $volumeInfo->imageLinks->thumbnail;
+                $item->thumbnail = $volumeInfo->imageLinks->thumbnail;
             }
         }
         
-        return $metadataItem;
+        return $item;
     }
     
 }

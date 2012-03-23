@@ -25,6 +25,8 @@ class ParserTest extends \PHPUnit_Framework_TestCase
         
         $this->assertInstanceOf("CGM\Books\Metadata\Item", $book);
         
+        $this->assertEquals('FbgkkgAACAAJ', $book->id);
+        
         $this->assertEquals('How to Be a Woman', $book->title);
         $this->assertEquals('I don\'t want to know', $book->description);
         $this->assertEquals('9780091940737', $book->ISBN);
