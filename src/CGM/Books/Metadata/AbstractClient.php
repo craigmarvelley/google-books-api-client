@@ -30,6 +30,22 @@ abstract class AbstractClient implements Client
     }
     
     /**
+     * Client::findVolume
+     *
+     * @param string $id
+     * 
+     * @return type 
+     */
+    public function findVolume($id)
+    {
+        $serviceResponse = $this->service->getMetadataForVolumeId($id);
+        
+        $parsedResult = $this->parser->parseMetadata($serviceResponse);
+        
+        return $parsedResult;
+    }
+    
+    /**
      * @see Client::executeQuery
      * 
      * @param Query $query

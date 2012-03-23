@@ -7,5 +7,7 @@ namespace CGM\Books\Metadata;
  */
 interface Service
 {
+    public function getMetadataForVolumeId($id);
+    
     public function getMetadataForQuery(Query $query);
 }

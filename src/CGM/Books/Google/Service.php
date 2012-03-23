@@ -13,16 +13,40 @@ class Service implements ServiceInterface
      *
      * @var string
      */
-    private $serviceUrl;
+    private $baseUrl;
     
     /**
      * Creates a new instance of this class
      * 
      * @var string $serviceURL
      */
-    public function __construct($serviceUrl) 
+    public function __construct($baseUrl) 
     {
-        $this->serviceUrl = $serviceUrl;
+        $this->baseUrl = $baseUrl;
+    }
+    
+    /**
+     * Queries the service for data relating to the given volume
+     * 
+     * @param string $id 
+     */
+    public function getMetadataForVolumeId($id)
+    {
+        $url = $this->getVolumeUrl($id);
+        
+        return $this->execute($url);
+    }
+    
+    /**
+     * @param string $id
+     * 
+     * @return string 
+     */
+    private function getVolumeUrl($id)
+    {
+        $volumeUrl = $this->baseUrl . '/' . $id;
+        
+        return $volumeUrl;
     }
     
     /**
@@ -34,17 +58,18 @@ class Service implements ServiceInterface
      */
     public function getMetadataForQuery(Query $query) 
     {
-        $queryURL = $this->getQueryURL($query);
+        $url = $this->getQueryUrl($query);
         
-        return $this->execute($queryURL);
+        return $this->execute($url);
     }
     
     /**
      * @param Query $query 
      */
-    private function getQueryURL(Query $query) 
+    private function getQueryUrl(Query $query) 
     {
-        $url = $this->serviceUrl;
+        $url = $this->baseUrl . '?q=';
+        
         $parts = $query->getQueryParts();
         
         foreach($parts as $key => $value) {

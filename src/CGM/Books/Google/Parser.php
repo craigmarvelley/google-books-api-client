@@ -13,19 +13,40 @@ use \DateTime;
 class Parser implements ParserInterface 
 {   
     /**
-     * Converts a JSON response from the Google Books service into an array of metadata items.
+     * Converts a JSON response from the Google Books service into one or more metadata objects, depending on the
+     * request
      *
      * @param string $metadata
      * 
-     * @return array
+     * @return mixed
      */
     public function parseMetadata($metadata) 
     {
-        $items = array();
-        
         $data = json_decode($metadata);
         
-        if(! $data instanceof stdClass || ! $data->totalItems) {
+        if(! $data instanceof stdClass) {
+            return null;
+        }
+        
+        $kind = $data->kind;
+        
+        if($kind == 'books#volumes') {
+            return $this->parseMultiVolumeData($data);
+        }
+        
+        return $this->parseSingleVolumeData($data);
+    }
+    
+    /**
+     * @param stdClass $data
+     * 
+     * @return array 
+     */
+    private function parseMultiVolumeData(stdClass $data)
+    {
+        $items = array();
+        
+        if(! $data->totalItems) {
             return $items;
         }
         
@@ -34,6 +55,16 @@ class Parser implements ParserInterface
         }
         
         return $items;
+    }
+    
+    /**
+     * @param stdClass $data
+     * 
+     * @return Item
+     */
+    private function parseSingleVolumeData(stdClass $data)
+    {
+        return $this->createItem($data);
     }
     
     /**
