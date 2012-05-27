@@ -1,0 +1,30 @@
+{
+    "hash": "b4cbece3169e5958eda242e2a33669e4",
+    "packages": [
+        {
+            "package": "guzzle/guzzle",
+            "version": "dev-master",
+            "source-reference": "c877894bcbe9ead8b8475e756e3f483c9e1c60d6"
+        },
+        {
+            "package": "symfony/event-dispatcher",
+            "version": "dev-master",
+            "source-reference": "eb82542e8ec9506096caf7c528564c740a214f56",
+            "alias-pretty-version": "2.1.x-dev",
+            "alias-version": "2.1.9999999.9999999-dev"
+        },
+        {
+            "package": "symfony/event-dispatcher",
+            "version": "dev-master",
+            "source-reference": "eb82542e8ec9506096caf7c528564c740a214f56"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ]
+}
