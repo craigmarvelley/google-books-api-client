@@ -1,0 +1,19 @@
+{
+    "name": "cmv/google-books-api-client",
+    "type": "library",
+    "description": "Google Books API Client",
+    "keywords": ["Guzzle"],
+    "authors": [
+        {
+            "name": "Craig Marvelley",
+            "email": "craig.marvelley@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2",
+        "guzzle/guzzle": "*"
+    },
+    "autoload": {
+        "psr-0": { "CMV\\GoogleBooks": "src/" }
+    }
+}
