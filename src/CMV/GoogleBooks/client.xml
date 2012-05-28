@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<client>
+    <commands>
+        <command name="get_volume" method="GET" uri="/books/v1/volumes/{{id}}">
+            <doc>Retrieve volume metadata</doc>
+            <param name="id" type="string" required="true" />
+        </command>
+        <command name="get_metadata_matching_isbn" method="GET" uri="/books/v1/volumes?q=isbn:{{isbn}}">
+            <doc>Retrieve volumes with the given ISBN</doc>
+            <param name="isbn" type="string" required="true" />
+        </command>
+    </commands>
+</client>

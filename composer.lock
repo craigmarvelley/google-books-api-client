@@ -1,10 +1,9 @@
 {
-    "hash": "b4cbece3169e5958eda242e2a33669e4",
+    "hash": "554eeb34881033b23dbb549237ab0681",
     "packages": [
         {
             "package": "guzzle/guzzle",
-            "version": "dev-master",
-            "source-reference": "c877894bcbe9ead8b8475e756e3f483c9e1c60d6"
+            "version": "v2.6.3"
         },
         {
             "package": "symfony/event-dispatcher",

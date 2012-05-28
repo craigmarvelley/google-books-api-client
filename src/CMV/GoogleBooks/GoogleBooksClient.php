@@ -15,10 +15,8 @@ class GoogleBooksClient extends Client
      *    base_url - Base URL of web service
      *
      * @return GoogleBooksClient
-     *
-     * @TODO update factory method and docblock for parameters
      */
-    public static function factory($config)
+    public static function factory($config = array())
     {
         $default = array();
         $required = array('base_url');
@@ -26,9 +24,7 @@ class GoogleBooksClient extends Client
 
         $client = new self($config->get('base_url'));
         $client->setConfig($config);
-
-        // Uncomment the following two lines to use an XML service description
-        // $client->setDescription(ServiceDescription::factory(__DIR__ . DIRECTORY_SEPARATOR . 'client.xml'));
+        $client->setDescription(ServiceDescription::factory(__DIR__ . DIRECTORY_SEPARATOR . 'client.xml'));
 
         return $client;
     }
