@@ -1,0 +1,52 @@
+{
+    "name": "Google Books API",
+    "apiVersion": "2012-10-25",
+    "baseUrl": "https://www.googleapis.com",
+    "description": "A client that provides access to the Google Books API",
+    "operations": {
+        "GetVolume": {
+            "httpMethod": "GET",
+            "uri": "/books/v1/volumes/{id}",
+            "summary": "Retrieves a single volume",
+            "responseClass": "GetVolumeOutput",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "description": "Volume to retrieve by ID",
+                    "required": "true"
+                }
+            }
+        },
+        "GetVolumesByIsbn": {
+            "httpMethod": "GET",
+            "uri": "/books/v1/volumes?q=isbn:{isbn}",
+            "summary": "Retrieves a single volume",
+            "responseClass": "GetVolumeOutput",
+            "parameters": {
+                "isbn": {
+                    "location": "uri",
+                    "description": "Volumes to retrieve by ISBN",
+                    "required": "true"
+                }
+            }
+        }
+    },
+    "models": {
+        "GetVolumeOutput": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "location": "json",
+                        "type": "string"
+                    },
+                    "volumeInfo": {
+                        "location": "json",
+                        "type": "array"
+                    }
+                }
+            }
+        }
+    }
+}
