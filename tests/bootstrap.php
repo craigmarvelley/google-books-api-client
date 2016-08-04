@@ -8,8 +8,6 @@ if (!file_exists(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'composer.lock')) {
         . "See https://github.com/composer/composer/blob/master/README.md for help with installing composer\n");
 }
 
-require_once 'PHPUnit/TextUI/TestRunner.php';
-
 // Register an autoloader for the client being tested
 spl_autoload_register(function($class) {
     if (0 === strpos($class, 'CMV\GoogleBooks')) {
@@ -29,7 +27,7 @@ spl_autoload_register(function($class) {
 });
 
 // Include the composer autoloader
-$loader = require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 // Register services with the GuzzleTestCase
 Guzzle\Tests\GuzzleTestCase::setMockBasePath(__DIR__ . DIRECTORY_SEPARATOR . 'mock');

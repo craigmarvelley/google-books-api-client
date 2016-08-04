@@ -28,7 +28,7 @@ class GoogleBooksApiClientTest extends GuzzleTestCase
         $this->assertInternalType('array', $data['volumeInfo']);
         $this->assertEquals('The Google Story', $data['volumeInfo']['title']);
         $this->assertEquals('The Google Story', $data['volumeInfo']['title']);
-        $this->assertEquals('9780553804577', $data['volumeInfo']['industryIdentifiers'][1]['identifier']);
+        $this->assertEquals('9780440335702', $data['volumeInfo']['industryIdentifiers'][1]['identifier']);
     }
     
     public function testGetMetadataMatchingISBNCommandReturnsVolumeData()
@@ -42,6 +42,6 @@ class GoogleBooksApiClientTest extends GuzzleTestCase
         $this->assertInternalType('array', $data);
         $this->assertArrayHasKey('items', $data);
         $this->assertEquals(1, $data['totalItems']);
-        $this->assertEquals('The Google story', $data['items'][0]['volumeInfo']['title']);
+        $this->assertEquals('The Google Story', $data['items'][0]['volumeInfo']['title']);
     }
 }

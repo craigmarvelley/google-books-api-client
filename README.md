@@ -53,3 +53,10 @@ $data = $responseModel->toArray();
 
 echo $data['id']; // prints 'zyTCAlFPjgYC'
 ```
+
+Running the unit tests
+----------------------
+
+```
+vendor/bin/phpunit 
+```
